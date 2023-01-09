@@ -9,9 +9,12 @@ public class BirdController : MonoBehaviour
     private Rigidbody2D myRigidbody;
     [SerializeField]
     private float birdSpeed = 5;
-    private bool isAlive = true;
+    public bool isAlive = true;
 
     public LogicController logic;
+
+    [SerializeField]
+    private InputAction controls;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,15 +22,24 @@ public class BirdController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
         var keyboard = Keyboard.current;
-        //Input.GetKeyDown(KeyCode.Space)
+        //Input.GetKeyDown(KeyCode.Space)        
+        
         if (keyboard.spaceKey.wasPressedThisFrame && isAlive)
         {
             myRigidbody.velocity = Vector3.up * birdSpeed;
             
         }
+    }*/
+
+    public void OnJump(InputValue value)
+    {
+        if (isAlive)
+        {
+            myRigidbody.velocity = Vector3.up * birdSpeed;
+        }        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

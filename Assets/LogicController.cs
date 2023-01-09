@@ -26,4 +26,9 @@ public class LogicController : MonoBehaviour
     {
         gameOverScreen.SetActive(true);
     }
+
+    public void OnRestart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }
